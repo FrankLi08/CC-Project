@@ -219,6 +219,18 @@
     <Content Include="Content\Image\Logo.jpg" />
     <Content Include="Content\Image\Pizzaheader.jpg" />
     <Content Include="Content\IndexPage.min.css" />
+    <Content Include="Content\LayoutPage.css" />
+    <Content Include="Content\sb-admin.css" />
+    <Content Include="Content\SCSS\creative.scss" />
+    <Content Include="Content\SCSS\_bootstrap-overrides.scss" />
+    <Content Include="Content\SCSS\_cta.scss" />
+    <Content Include="Content\SCSS\_global.scss" />
+    <Content Include="Content\SCSS\_masthead.scss" />
+    <Content Include="Content\SCSS\_mixins.scss" />
+    <Content Include="Content\SCSS\_navbar.scss" />
+    <Content Include="Content\SCSS\_portfolio.scss" />
+    <Content Include="Content\SCSS\_services.scss" />
+    <Content Include="Content\SCSS\_variables.scss" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,16 +244,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\SCSS\creative.scss" />
-    <Content Include="Content\SCSS\_bootstrap-overrides.scss" />
-    <Content Include="Content\SCSS\_cta.scss" />
-    <Content Include="Content\SCSS\_global.scss" />
-    <Content Include="Content\SCSS\_masthead.scss" />
-    <Content Include="Content\SCSS\_mixins.scss" />
-    <Content Include="Content\SCSS\_navbar.scss" />
-    <Content Include="Content\SCSS\_portfolio.scss" />
-    <Content Include="Content\SCSS\_services.scss" />
-    <Content Include="Content\SCSS\_variables.scss" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -251,6 +253,7 @@
     <Content Include="scripts\jquery-3.2.1.min.js" />
     <Content Include="scripts\jquery-3.2.1.slim.js" />
     <Content Include="scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="scripts\LayoutPage.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
@@ -351,6 +354,7 @@
     <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Account\SignUp.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

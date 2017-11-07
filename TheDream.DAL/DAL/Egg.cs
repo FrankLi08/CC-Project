@@ -12,10 +12,11 @@ namespace TheDream.DAL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Color
+    public partial class Egg
     {
-        public int ColorId { get; set; }
+        public int EggId { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public int EggColor { get; set; }
+        public Nullable<double> WeightPer { get; set; }
     }
 }

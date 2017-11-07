@@ -12,10 +12,15 @@ namespace TheDream.DAL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Color
+    public partial class Season
     {
-        public int ColorId { get; set; }
+        public int SeasonId { get; set; }
         public string Name { get; set; }
+        public int Color { get; set; }
+        public Nullable<double> Salty { get; set; }
+        public Nullable<double> Sweet { get; set; }
+        public Nullable<double> Sour { get; set; }
+        public Nullable<double> Spicy { get; set; }
         public Nullable<bool> Active { get; set; }
     }
 }

@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Cloudy_ChefModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustomerUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role_Id" Type="int" Nullable="false" />
+          <Property Name="ForceChangePassword" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Egg">
+          <Key>
+            <PropertyRef Name="EggId" />
+          </Key>
+          <Property Name="EggId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EggColor" Type="int" Nullable="false" />
+          <Property Name="WeightPer" Type="float" />
+        </EntityType>
+        <EntityType Name="Meat">
+          <Key>
+            <PropertyRef Name="MeatId" />
+          </Key>
+          <Property Name="MeatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MeatColor" Type="int" Nullable="false" />
+          <Property Name="Fat" Type="float" />
+          <Property Name="Salty" Type="float" />
+        </EntityType>
+        <EntityType Name="RecipeHistory">
+          <Key>
+            <PropertyRef Name="RecipeHistoryId" />
+          </Key>
+          <Property Name="RecipeHistoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="RecipeDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="SeasonId" />
+          </Key>
+          <Property Name="SeasonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Color" Type="int" Nullable="false" />
+          <Property Name="Salty" Type="float" />
+          <Property Name="Sweet" Type="float" />
+          <Property Name="Sour" Type="float" />
+          <Property Name="Spicy" Type="float" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vegetable">
+          <Key>
+            <PropertyRef Name="VegId" />
+          </Key>
+          <Property Name="VegId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Color" Type="int" Nullable="false" />
+          <Property Name="Salty" Type="float" />
+          <Property Name="Spicy" Type="float" />
+          <Property Name="Bitter" Type="float" />
+          <Property Name="Sour" Type="float" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Purpose" Type="int" />
+        </EntityType>
+        <EntityContainer Name="Cloudy_ChefModelStoreContainer">
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerUser" EntityType="Self.CustomerUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Egg" EntityType="Self.Egg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meat" EntityType="Self.Meat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecipeHistory" EntityType="Self.RecipeHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vegetable" EntityType="Self.Vegetable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cloudy_ChefModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CustomerUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="ForceChangePassword" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Egg">
+          <Key>
+            <PropertyRef Name="EggId" />
+          </Key>
+          <Property Name="EggId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EggColor" Type="Int32" Nullable="false" />
+          <Property Name="WeightPer" Type="Double" />
+        </EntityType>
+        <EntityType Name="Meat">
+          <Key>
+            <PropertyRef Name="MeatId" />
+          </Key>
+          <Property Name="MeatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeatColor" Type="Int32" Nullable="false" />
+          <Property Name="Fat" Type="Double" />
+          <Property Name="Salty" Type="Double" />
+        </EntityType>
+        <EntityType Name="RecipeHistory">
+          <Key>
+            <PropertyRef Name="RecipeHistoryId" />
+          </Key>
+          <Property Name="RecipeHistoryId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="SeasonId" />
+          </Key>
+          <Property Name="SeasonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="Int32" Nullable="false" />
+          <Property Name="Salty" Type="Double" />
+          <Property Name="Sweet" Type="Double" />
+          <Property Name="Sour" Type="Double" />
+          <Property Name="Spicy" Type="Double" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Vegetable">
+          <Key>
+            <PropertyRef Name="VegId" />
+          </Key>
+          <Property Name="VegId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Color" Type="Int32" Nullable="false" />
+          <Property Name="Salty" Type="Double" />
+          <Property Name="Spicy" Type="Double" />
+          <Property Name="Bitter" Type="Double" />
+          <Property Name="Sour" Type="Double" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Purpose" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="Cloudy_ChefEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Color" EntityType="Self.Color" />
+          <EntitySet Name="CustomerUser" EntityType="Self.CustomerUser" />
+          <EntitySet Name="Egg" EntityType="Self.Egg" />
+          <EntitySet Name="Meat" EntityType="Self.Meat" />
+          <EntitySet Name="RecipeHistory" EntityType="Self.RecipeHistory" />
+          <EntitySet Name="Season" EntityType="Self.Season" />
+          <EntitySet Name="Vegetable" EntityType="Self.Vegetable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cloudy_ChefModelStoreContainer" CdmEntityContainer="Cloudy_ChefEntities">
+          <EntitySetMapping Name="Color">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerUser">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.CustomerUser">
+              <MappingFragment StoreEntitySet="CustomerUser">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="ForceChangePassword" ColumnName="ForceChangePassword" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Egg">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.Egg">
+              <MappingFragment StoreEntitySet="Egg">
+                <ScalarProperty Name="EggId" ColumnName="EggId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EggColor" ColumnName="EggColor" />
+                <ScalarProperty Name="WeightPer" ColumnName="WeightPer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meat">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.Meat">
+              <MappingFragment StoreEntitySet="Meat">
+                <ScalarProperty Name="MeatId" ColumnName="MeatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MeatColor" ColumnName="MeatColor" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="Salty" ColumnName="Salty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecipeHistory">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.RecipeHistory">
+              <MappingFragment StoreEntitySet="RecipeHistory">
+                <ScalarProperty Name="RecipeHistoryId" ColumnName="RecipeHistoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RecipeDescription" ColumnName="RecipeDescription" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Season">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.Season">
+              <MappingFragment StoreEntitySet="Season">
+                <ScalarProperty Name="SeasonId" ColumnName="SeasonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Salty" ColumnName="Salty" />
+                <ScalarProperty Name="Sweet" ColumnName="Sweet" />
+                <ScalarProperty Name="Sour" ColumnName="Sour" />
+                <ScalarProperty Name="Spicy" ColumnName="Spicy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vegetable">
+            <EntityTypeMapping TypeName="Cloudy_ChefModel.Vegetable">
+              <MappingFragment StoreEntitySet="Vegetable">
+                <ScalarProperty Name="VegId" ColumnName="VegId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Salty" ColumnName="Salty" />
+                <ScalarProperty Name="Spicy" ColumnName="Spicy" />
+                <ScalarProperty Name="Bitter" ColumnName="Bitter" />
+                <ScalarProperty Name="Sour" ColumnName="Sour" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

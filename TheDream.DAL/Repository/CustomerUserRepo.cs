@@ -16,7 +16,7 @@ namespace TheDream.DAL.Repository
     public class CustomerUserRepo : GenericRepository<CustomerUser>, ICustoemrUserRepo, IDisposable
     {
         private bool _disposed = false;
-        public CustomerUserRepo(Cloudy_ChefEntitiesContext context) : base(context)
+        public CustomerUserRepo(Cloudy_ChefEntities context) : base(context)
         {
 
         }

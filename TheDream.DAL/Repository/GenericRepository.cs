@@ -12,10 +12,10 @@ namespace TheDream.DAL.Repository
 {
    public abstract class GenericRepository<T>:IRepository<T> where T :class
     {
-        protected Cloudy_ChefEntitiesContext _context;
+        protected Cloudy_ChefEntities _context;
         protected readonly IDbSet<T> _dbSet;
 
-        protected GenericRepository(Cloudy_ChefEntitiesContext context)
+        protected GenericRepository(Cloudy_ChefEntities context)
         {
             _context = context;
             _dbSet = context.Set<T>();

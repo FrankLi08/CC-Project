@@ -52,30 +52,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DAL\CloudChef.Context.cs">
+    <Compile Include="DAL\CChef.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CloudChef.Context.tt</DependentUpon>
+      <DependentUpon>CChef.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\CloudChef.cs">
+    <Compile Include="DAL\CChef.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CloudChef.tt</DependentUpon>
+      <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\CloudChef.Designer.cs">
+    <Compile Include="DAL\CChef.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CloudChef.edmx</DependentUpon>
+      <DependentUpon>CChef.edmx</DependentUpon>
     </Compile>
     <Compile Include="DAL\Color.cs">
-      <DependentUpon>CloudChef.tt</DependentUpon>
+      <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\CustomerUser.cs">
-      <DependentUpon>CloudChef.tt</DependentUpon>
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Egg.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Meat.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\RecipeHistory.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Season.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Vegetable.cs">
-      <DependentUpon>CloudChef.tt</DependentUpon>
+      <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Recipe.cs" />
+    <Compile Include="Model\VegtableDosing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerUserRepo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
@@ -83,12 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DAL\CloudChef.edmx">
+    <EntityDeploy Include="DAL\CChef.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CloudChef.Designer.cs</LastGenOutput>
+      <LastGenOutput>CChef.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DAL\CloudChef.edmx.diagram">
-      <DependentUpon>CloudChef.edmx</DependentUpon>
+    <None Include="DAL\CChef.edmx.diagram">
+      <DependentUpon>CChef.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -103,19 +117,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\CloudChef.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CloudChef.edmx</DependentUpon>
-      <LastGenOutput>CloudChef.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DAL\CloudChef.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CloudChef.edmx</DependentUpon>
-      <LastGenOutput>CloudChef.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="DAL\CChef.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CChef.edmx</DependentUpon>
+      <LastGenOutput>CChef.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\CChef.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CChef.edmx</DependentUpon>
+      <LastGenOutput>CChef.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

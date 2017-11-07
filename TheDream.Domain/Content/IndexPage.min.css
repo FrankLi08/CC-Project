@@ -180,7 +180,7 @@ body {
 header.masthead {
     position: relative;
     width: 100%;
-    min-height: auto;
+    /*min-height: auto;*/
     text-align: center;
     color: #fff;
     background-image: url(../Content/Image/markus-spiske-139525.jpg);

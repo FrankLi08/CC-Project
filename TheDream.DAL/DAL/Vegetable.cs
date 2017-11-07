@@ -22,5 +22,6 @@ namespace TheDream.DAL.DAL
         public Nullable<double> Bitter { get; set; }
         public Nullable<double> Sour { get; set; }
         public Nullable<bool> Active { get; set; }
+        public Nullable<int> Purpose { get; set; }
     }
 }

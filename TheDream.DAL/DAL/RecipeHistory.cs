@@ -12,10 +12,13 @@ namespace TheDream.DAL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Color
+    public partial class RecipeHistory
     {
-        public int ColorId { get; set; }
+        public System.Guid RecipeHistoryId { get; set; }
         public string Name { get; set; }
+        public string RecipeDescription { get; set; }
+        public System.DateTimeOffset CreateDate { get; set; }
+        public Nullable<int> Score { get; set; }
         public Nullable<bool> Active { get; set; }
     }
 }
