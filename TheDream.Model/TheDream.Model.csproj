@@ -44,6 +44,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
+    <Compile Include="Models\EstimateResult.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

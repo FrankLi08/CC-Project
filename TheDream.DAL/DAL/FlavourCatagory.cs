@@ -12,15 +12,11 @@ namespace TheDream.DAL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerUser
+    public partial class FlavourCatagory
     {
-        public int UserId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public int Role_Id { get; set; }
-        public bool ForceChangePassword { get; set; }
-        public bool IsLockedOut { get; set; }
+        public int FlavCatagoryId { get; set; }
+        public string CatagoryName { get; set; }
+        public string Description { get; set; }
         public Nullable<bool> Active { get; set; }
     }
 }

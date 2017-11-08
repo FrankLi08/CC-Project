@@ -76,6 +76,12 @@
     <Compile Include="DAL\Egg.cs">
       <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Flavour.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FlavourCatagory.cs">
+      <DependentUpon>CChef.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Meat.cs">
       <DependentUpon>CChef.tt</DependentUpon>
     </Compile>

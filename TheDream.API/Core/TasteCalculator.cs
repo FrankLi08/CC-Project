@@ -7,7 +7,7 @@ using TheDream.DAL.Model;
 
 namespace TheDream.API.Core
 {
-    public class VegetableEvaluation
+    public class TasteCalculator
     {
         /// <summary>
         /// Get taste value from vegetable
@@ -23,8 +23,8 @@ namespace TheDream.API.Core
                 VegValue.Salty += item.VegValue.Salty * item.Weight;
                 VegValue.Spicy += item.VegValue.Spicy * item.Weight;
                 VegValue.Sour += item.VegValue.Sour * item.Weight;
-                VegValue.Sweet += item.VegValue.Sweet * item.Weight;
                 VegValue.Bitter += item.VegValue.Bitter * item.Weight;
+                VegValue.Sweet += item.VegValue.Sweet * item.Weight;
                 VegValue.Weight += item.Weight;
 
             }
@@ -65,6 +65,40 @@ namespace TheDream.API.Core
                 SeasonValue.Weight = item.Weight;
             }
             return SeasonValue;
+        }
+
+        public TasteValue EggCalculate(List<EggDosing> eggList)
+        {
+            TasteValue EggValue = new TasteValue();
+            foreach (EggDosing item in eggList)
+            {
+                EggValue.Weight = item.Number * 50;
+
+            }
+            return EggValue;
+        }
+        public TasteValue AvgCalculator(List<TasteValue> TasteList)
+        {
+            TasteValue TotalTaste = new TasteValue();
+            foreach (TasteValue item in TasteList)
+            {
+                TotalTaste.Salty += item.Salty;
+                TotalTaste.Sour += item.Sour;
+                TotalTaste.Spicy += item.Spicy;
+                TotalTaste.Bitter += item.Bitter;
+                TotalTaste.Sweet += item.Sweet;
+                TotalTaste.Oil += item.Oil;
+                TotalTaste.Weight = item.Weight;
+            }
+            TotalTaste.Spicy = TotalTaste.Spicy / TotalTaste.Weight;
+            TotalTaste.Sour = TotalTaste.Sour / TotalTaste.Weight;
+            TotalTaste.Salty = TotalTaste.Salty / TotalTaste.Weight;
+            TotalTaste.Bitter = TotalTaste.Bitter / TotalTaste.Weight;
+            TotalTaste.Sweet = TotalTaste.Sweet / TotalTaste.Weight;
+            TotalTaste.Oil = TotalTaste.Oil / TotalTaste.Weight;
+
+            return TotalTaste;
+
         }
     }
 }

@@ -237,10 +237,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Core\TasteCalculator.cs" />
+    <Compile Include="Core\TasteEstimate.cs" />
     <Compile Include="Core\VegetableEvaluation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RecipeEvaluation.cs" />
     <Compile Include="Models\TasteValue.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -305,6 +308,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TheDream.DAL\TheDream.DAL.csproj">
+      <Project>{A40B2826-18D3-4771-8B92-93EFC1A584B9}</Project>
+      <Name>TheDream.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TheDream.Model\TheDream.Model.csproj">
       <Project>{993bb834-d8d5-4fc8-a616-1ea2f4c0de88}</Project>
       <Name>TheDream.Model</Name>

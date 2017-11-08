@@ -13,10 +13,10 @@ namespace TheDream.DAL.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Cloudy_ChefEntities : DbContext
+    public partial class Cloud_ChefEntities : DbContext
     {
-        public Cloudy_ChefEntities()
-            : base("name=Cloudy_ChefEntities")
+        public Cloud_ChefEntities()
+            : base("name=Cloud_ChefEntities")
         {
         }
     
@@ -28,6 +28,8 @@ namespace TheDream.DAL.DAL
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<CustomerUser> CustomerUser { get; set; }
         public virtual DbSet<Egg> Egg { get; set; }
+        public virtual DbSet<Flavour> Flavour { get; set; }
+        public virtual DbSet<FlavourCatagory> FlavourCatagory { get; set; }
         public virtual DbSet<Meat> Meat { get; set; }
         public virtual DbSet<RecipeHistory> RecipeHistory { get; set; }
         public virtual DbSet<Season> Season { get; set; }

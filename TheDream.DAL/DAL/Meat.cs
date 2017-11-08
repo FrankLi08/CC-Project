@@ -19,5 +19,7 @@ namespace TheDream.DAL.DAL
         public int MeatColor { get; set; }
         public Nullable<double> Fat { get; set; }
         public Nullable<double> Salty { get; set; }
+        public Nullable<bool> Active { get; set; }
+        public Nullable<int> CookTime { get; set; }
     }
 }

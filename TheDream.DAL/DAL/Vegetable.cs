@@ -18,9 +18,11 @@ namespace TheDream.DAL.DAL
         public string Name { get; set; }
         public int Color { get; set; }
         public Nullable<double> Salty { get; set; }
+        public Nullable<double> Sweet { get; set; }
         public Nullable<double> Spicy { get; set; }
         public Nullable<double> Bitter { get; set; }
         public Nullable<double> Sour { get; set; }
+        public Nullable<int> FlavourId { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<int> Purpose { get; set; }
     }

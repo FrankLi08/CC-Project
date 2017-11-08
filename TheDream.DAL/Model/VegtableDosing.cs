@@ -7,15 +7,49 @@ using TheDream.DAL.DAL;
 
 namespace TheDream.DAL.Model
 {
-   public class VegtableDosing
+    public class VegtableDosing
     {
         public VegtableDosing()
         {
-            this.Veg = new Vegetable();
+            this.VegValue = new Vegetable();
             this.Weight = 0;
         }
-        public Vegetable Veg { get; set; }
+        public Vegetable VegValue { get; set; }
         public int Weight { get; set; }
 
     }
+    public class MeatDosing
+    {
+        public MeatDosing()
+        {
+            this.MeatValue = new Meat();
+            this.Weight = 0;
+            
+        }
+        public Meat MeatValue { get; set; }
+        public int Weight { get; set; }
+    }
+    public class SeasonDosing
+    {
+        public SeasonDosing()
+        {
+            this.SeasonValue = new Season();
+            this.Weight = 0;
+        }
+        public Season SeasonValue { get; set; }
+        public int Weight { get; set; }
+
+    }
+    public class EggDosing
+    {
+        public EggDosing()
+        {
+            this.EggValue = new Egg();
+            this.Number = 0;
+
+        }
+        public Egg EggValue { get; set; }
+        public int Number { get; set; }
+    }
+
 }

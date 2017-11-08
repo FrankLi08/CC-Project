@@ -16,7 +16,8 @@ namespace TheDream.DAL.DAL
     {
         public int EggId { get; set; }
         public string Name { get; set; }
-        public int EggColor { get; set; }
+        public int Color { get; set; }
         public Nullable<double> WeightPer { get; set; }
+        public Nullable<bool> Active { get; set; }
     }
 }
