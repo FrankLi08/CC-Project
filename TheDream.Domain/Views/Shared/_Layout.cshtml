@@ -3,73 +3,116 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title = Login Page</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/scripts/jquery-3.2.1.min.js"></script>
-    <!-- Bootstrap core CSS-->
-    @*<link href="~vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
-    <!-- Custom fonts for this template-->
-    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template-->
-    <link href="~/Content/LayoutPage.css" rel="stylesheet" type="text/css">
-
-    <script src="~/scripts/jquery-3.2.1.min.js"></script>
-    <script src="~/scripts/bootstrap.min.js"></script>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+  
+  
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/LayoutPage.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.2.1.js"></script>
+    <script src="~/scripts/bootstrap.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("active");
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
             });
-        })
+
+        });
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+                <strong>BS</strong>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Home
+                    </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#">Home 3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                        About
+                    </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="glyphicon glyphicon-duplicate"></i>
+                        Pages
+                    </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-link"></i>
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-paperclip"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="glyphicon glyphicon-send"></i>
+                        Contact
+                    </a>
+                </li>
             </ul>
-        </div>
-    </nav>
-    <div id="wrapper" class="active">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul id="sidebar_menu" class="sidebar-nav">
-                <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+
+            <ul class="list-unstyled CTAs">
+                <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
+                <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
             </ul>
-            <ul class="sidebar-nav" id="sidebar">
-                <li><a>Cadastro<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-                <ul class="sidebar-nav" id="sidebar">
-                    <li><a>link1<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-                    <li><a>link2<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-                </ul>
-                <li><a>Consulta<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-                <li><a>Relatorio<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
-            </ul>
-        </div>
-        <div id="page-content-wrapper">
-            <div class="page-content inset">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="well lead">Cadastro de Cliente</p>
-                        @RenderBody()
-                        @*<hr />
-                            <footer>
-                                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                            </footer>*@
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <div class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                            <span>Toggle Sidebar</span>
+                        </button>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Page</a></li>
+                            <li><a href="#">Page</a></li>
+                            <li><a href="#">Page</a></li>
+                            <li><a href="#">Page</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div>
+                @RenderBody()
+            </div>
+
         </div>
     </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
 </body>
 </html>

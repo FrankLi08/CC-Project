@@ -1,17 +1,43 @@
 ﻿@model TheDream.Domain.Models.UserViewModel
 @{
-    ViewBag.Title = "Login";
+    Layout = null;
 }
 
-<h2>Login</h2>
-<div>
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-    {
-        @Html.LabelFor(m => m.UserName)
-        @Html.TextBoxFor(m => m.UserName)
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password)
-        <input type="submit" value="Log In" />
-    }
-</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/LoginPage.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                <span id="reauth-email" class="reauth-email"></span>
+                @Html.LabelFor(m => m.UserName , new { @class="col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Email address" })
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <input type="submit" value="Log In" class="btn btn-lg btn-primary btn-block btn-signin" />
+            }          
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!
+</body>
+</html>
+
 

@@ -45,7 +45,9 @@
     <Compile Include="Common\BaseEntity.cs" />
     <Compile Include="Common\PasswordGenerator.cs" />
     <Compile Include="Models\EstimateResult.cs" />
+    <Compile Include="Models\RecipeViewModel.cs" />
     <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\VegetableList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -94,5 +94,66 @@ namespace TheDream.Domain.Repository
                 return responseMessage;
             }
         }
+        public async Task<HttpResponseMessage> SendRecipe(RecipeViewModel model)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _userSession.BearerToken);
+                var AllRoleUrl = ApiBaseUrl + "/api/RecipeEval/Recipe";
+                var responseMessage = await client.PostAsJsonAsync(AllRoleUrl, model);
+                return responseMessage;
+            }
+        }
+
+        public async Task<HttpResponseMessage> GetVegList()
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _userSession.BearerToken);
+                var AllUrl = ApiBaseUrl + "/api/RecipeEval/VegetableList";
+                var responseMessage = await client.GetAsync(AllUrl);
+                return responseMessage;
+            }
+        }
+        public async Task<HttpResponseMessage> GetMeatList()
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _userSession.BearerToken);
+                var AllUrl = ApiBaseUrl + "/api/RecipeEval/MeatList";
+                var responseMessage = await client.GetAsync(AllUrl);
+                return responseMessage;
+            }
+        }
+        public async Task<HttpResponseMessage> GetSeasonList()
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _userSession.BearerToken);
+                var AllUrl = ApiBaseUrl + "/api/RecipeEval/SeasonList";
+                var responseMessage = await client.GetAsync(AllUrl);
+                return responseMessage;
+            }
+        }
+        public async Task<HttpResponseMessage> GetEggList()
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _userSession.BearerToken);
+                var AllUrl = ApiBaseUrl + "/api/RecipeEval/EggList";
+                var responseMessage = await client.GetAsync(AllUrl);
+                return responseMessage;
+            }
+        }
     }
 }

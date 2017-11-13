@@ -220,6 +220,7 @@
     <Content Include="Content\Image\Pizzaheader.jpg" />
     <Content Include="Content\IndexPage.min.css" />
     <Content Include="Content\LayoutPage.css" />
+    <Content Include="Content\LoginPage.css" />
     <Content Include="Content\sb-admin.css" />
     <Content Include="Content\SCSS\creative.scss" />
     <Content Include="Content\SCSS\_bootstrap-overrides.scss" />
@@ -290,6 +291,7 @@
     <Compile Include="Client\IApiClient.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RecipeController.cs" />
     <Compile Include="Extension\ApiExtensions.cs" />
     <Compile Include="Extension\HttpClientInstance.cs" />
     <Compile Include="Extension\TokenContainer.cs" />
@@ -317,7 +319,6 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -355,6 +356,7 @@
     <Content Include="vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -364,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Recipe\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TheDream.Model\TheDream.Model.csproj">

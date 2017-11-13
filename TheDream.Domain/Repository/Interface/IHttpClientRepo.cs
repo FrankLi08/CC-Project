@@ -16,5 +16,11 @@ namespace TheDream.Domain.Repository.Interface
         Task<HttpResponseMessage> ResetPassword(string userName);
         Task<HttpResponseMessage> GetUserInfo(string userName);
         Task<HttpResponseMessage> UpdateUser(UpdateUser model);
+        Task<HttpResponseMessage> SendRecipe(RecipeViewModel model);
+        Task<HttpResponseMessage> GetVegList();
+        Task<HttpResponseMessage> GetMeatList();
+        Task<HttpResponseMessage> GetSeasonList();
+        Task<HttpResponseMessage> GetEggList();
+
     }
 }

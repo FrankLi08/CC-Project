@@ -7,9 +7,9 @@ using TheDream.DAL.DAL;
 
 namespace TheDream.DAL.Model
 {
-    public class VegtableDosing
+    public class VegetableDosing
     {
-        public VegtableDosing()
+        public VegetableDosing()
         {
             this.VegValue = new Vegetable();
             this.Weight = 0;

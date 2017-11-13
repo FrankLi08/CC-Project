@@ -14,11 +14,11 @@ namespace TheDream.API.Core
         /// </summary>
         /// <param name="veglist"></param>
         /// <returns></returns>
-        public TasteValue VegtableCalculate(List<VegtableDosing> veglist)
+        public TasteValue VegtableCalculate(List<VegetableDosing> veglist)
         {
             TasteValue VegValue = new TasteValue();
 
-            foreach (VegtableDosing item in veglist)
+            foreach (VegetableDosing item in veglist)
             {
                 VegValue.Salty += item.VegValue.Salty * item.Weight;
                 VegValue.Spicy += item.VegValue.Spicy * item.Weight;

@@ -94,8 +94,10 @@
     <Compile Include="DAL\Vegetable.cs">
       <DependentUpon>CChef.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extension\SQLExtensionMethod.cs" />
     <Compile Include="Model\Recipe.cs" />
-    <Compile Include="Model\VegtableDosing.cs" />
+    <Compile Include="Model\VegFlavour.cs" />
+    <Compile Include="Model\VegetableDosing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CustomerUserRepo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
