@@ -15,7 +15,7 @@ namespace TheDream.Domain.Repository
         {
             get
             {
-                return ((ClaimsPrincipal)HttpContext.Current.User).FindFirst("AcessToken").Value;
+                return ((ClaimsPrincipal)HttpContext.Current.User).FindFirst("AccessToken").Value;
             }
         }
     }

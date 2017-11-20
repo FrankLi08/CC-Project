@@ -76,11 +76,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -212,11 +212,10 @@
     <Content Include="Content\Image\3.jpg" />
     <Content Include="Content\Image\4.jpg" />
     <Content Include="Content\Image\brooke-lark-275181.jpg" />
-    <Content Include="Content\Image\Logo2.jpg" />
+    <Content Include="Content\Image\loginbackground.jpg" />
+    <Content Include="Content\Image\Logo.PNG" />
     <Content Include="Content\Image\markus-spiske-139525.jpg" />
-    <Content Include="Content\Image\newheader.jpg" />
     <Content Include="Content\Image\Nfoodheader.jpg" />
-    <Content Include="Content\Image\Logo.jpg" />
     <Content Include="Content\Image\Pizzaheader.jpg" />
     <Content Include="Content\IndexPage.min.css" />
     <Content Include="Content\LayoutPage.css" />
@@ -301,7 +300,9 @@
     <Compile Include="Helper\FormAuthHelper.cs" />
     <Compile Include="Models\ApiModel.cs" />
     <Compile Include="Models\LoginClient.cs" />
+    <Compile Include="Models\Token.cs" />
     <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="Models\VegetableViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\HttpClientRepo.cs" />
     <Compile Include="Repository\Interface\IHttpClientRepo.cs" />
@@ -357,6 +358,7 @@
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Recipe\GetVegList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -366,7 +368,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Recipe\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TheDream.Model\TheDream.Model.csproj">

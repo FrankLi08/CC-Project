@@ -6,11 +6,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TheDream.Domain.Models;
 using TheDream.Domain.Repository.Interface;
 using TheDream.Model.Models;
 
 namespace TheDream.Domain.Controllers
 {
+    [Authorize]
     public class RecipeController : Controller
     {
         private readonly IHttpClientRepo _ClientRepo;
@@ -41,7 +43,14 @@ namespace TheDream.Domain.Controllers
             HttpResponseMessage response = await _ClientRepo.GetVegList();
             var result = response.Content.ReadAsStringAsync().Result;
             List<VegetableList> VegListResult = JsonConvert.DeserializeObject<List<VegetableList>>(result);
-            return PartialView(VegListResult);
+            var VegSelectList = new List<SelectListItem>();
+            foreach(var item in VegListResult)
+            {
+                VegSelectList.Add(new SelectListItem() { Text = item.VegName, Value = item.Id.ToString() });
+            }
+            VegetableViewModel ViewModel = new VegetableViewModel();
+            ViewModel.VegetableList = VegSelectList; 
+            return PartialView(ViewModel);
         }
         [HttpGet]
         public async Task<ActionResult> GetMeatList()

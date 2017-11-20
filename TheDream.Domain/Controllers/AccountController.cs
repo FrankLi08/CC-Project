@@ -1,12 +1,21 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Owin.Security.DataHandler.Serializer;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Security.Claims;
+
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
+using System.Web.Security;
 using TheDream.Domain.Client;
 using TheDream.Domain.Extension;
 using TheDream.Domain.Helper;
@@ -22,6 +31,7 @@ namespace TheDream.Domain.Controllers
     {
         private readonly LoginClient loginClient;
         private readonly HttpClientRepo _ClientRepo;
+        private string xxxx;
         // GET: Account
         public AccountController(HttpClientRepo ClientRepo)
         {
@@ -29,9 +39,9 @@ namespace TheDream.Domain.Controllers
             var apiClient = new ApiClient(HttpClientInstance.Instance);
             loginClient = new LoginClient(apiClient);
             _ClientRepo = ClientRepo;
-
+          
         }
-
+        
      
         [Route("LogIn")]
         [HttpGet]
@@ -40,18 +50,90 @@ namespace TheDream.Domain.Controllers
 
             return View();
         }
+
+
         [HttpPost]
-        public async Task<ActionResult> Login(UserViewModel model)
-        {
-            var TokenResponse = await loginClient.Login(model);
-            if (TokenResponse.StatusIsSuccessful)
+        public ActionResult Login(UserViewModel model)
+        { 
+            string TokenUri = "Http://localhost:62367/api/Token";
+        //var getTokenUrl = string.Format(ApiEndPoints.AuthorisationTokenEndpoint.Post.Token, ConfigurationManager.AppSettings["ApiBaseUri"]);
+
+            using (HttpClient httpClient = new HttpClient())
             {
-                FormAuthHelper.ValidateUser(model, TokenResponse, Response);
-                
+                HttpContent content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("grant_type", "password"),
+                    new KeyValuePair<string, string>("username", model.UserName),
+                    new KeyValuePair<string, string>("password", model.Password)
+                });
+
+                HttpResponseMessage Responses =  httpClient.PostAsync(TokenUri, content).Result;
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+                string resultContent = Responses.Content.ReadAsStringAsync().Result;
+
+                var result = JsonConvert.DeserializeObject<Token>(resultContent);
+                //
+                FormsAuthentication.SetAuthCookie(result.AccessToken, true);
+                AuthenticationProperties options = new AuthenticationProperties();
+
+                options.AllowRefresh = true;
+                options.IsPersistent = true;
+                //options.ExpiresUtc = DateTime.UtcNow.AddSeconds(int.Parse(token.expires_in));
+
+                var claims = new[]
+                {
+                    new Claim(ClaimTypes.Name, result.UserName), //Name is the default name claim type, and UserName is the one known also in Web API.
+                    new Claim(ClaimTypes.NameIdentifier, result.UserName), //If you want to use User.Identity.GetUserId in Web API, you need a NameIdentifier 
+                    new Claim("AcessToken", result.AccessToken)
+                };
+
+                var identity = new ClaimsIdentity(claims, "ApplicationCookie");
+                var authTicket = new AuthenticationTicket(new ClaimsIdentity(claims, "ApplicationCookie"), new AuthenticationProperties
+                {
+                    ExpiresUtc = result.Expires,
+                    
+                    IssuedUtc = result.Issued
+                   
+                });
+                byte[] userData = DataSerializers.Ticket.Serialize(authTicket);
+                string protectedText = TextEncodings.Base64Url.Encode(userData);
+                Response.SetCookie(new HttpCookie("CloudChef.WebApi.Auth")
+                {
+                    HttpOnly = true,
+                    Expires = result.Expires.UtcDateTime,
+                    Value = protectedText
+                });
+                var claimidentity = (ClaimsIdentity)User.Identity;
+                IEnumerable<Claim> claimsI = claimidentity.Claims;
+                string BToken =claimsI.Where(x => x.Type == "AcessToken").Select(x => x.Value).FirstOrDefault().ToString();
+                Configuration webConfigApp = WebConfigurationManager.OpenWebConfiguration("~");
+                var settings = webConfigApp.AppSettings.Settings;
+                if (settings["BearerToken"] == null)
+                {
+                    settings.Add("BearerToken", BToken);
+                }
+                else
+                {
+                    settings["BearerToken"].Value = BToken;
+                }
+                webConfigApp.Save(ConfigurationSaveMode.Modified);
+           
+                Request.GetOwinContext().Authentication.SignIn(options, identity);
+
             }
-            Session["token"] = TokenResponse.Data;
+           
+
             return RedirectToAction("Index", "Home");
+            //var TokenResponse = await loginClient.Login(model);
+            //if (TokenResponse.StatusIsSuccessful)
+            //{
+            //    FormAuthHelper.ValidateUser(model, TokenResponse, Response);
+
+            //}
+            //Session["token"] = TokenResponse.Data;
+            //return RedirectToAction("Index", "Home");
         }
+
         [AllowAnonymous]
         [HttpGet]
         public ActionResult SignUp()

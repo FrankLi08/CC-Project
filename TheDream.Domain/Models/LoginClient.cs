@@ -61,12 +61,13 @@ namespace TheDream.Domain.Models
 
                 var claims = new[]
                 {
-                    new Claim("AcessToken",tokenResponse.Data.ToString()),
+                    new Claim("AccessToken", string.Format("Bearer{0}", tokenResponse.Data.ToString()))
                 };
 
                 var identity = new ClaimsIdentity(claims, "ApplicationCookie");
                 HttpContext.Current.GetOwinContext().Authentication.SignIn(options, identity);
                 return tokenResponse;
+              
             }
         }
 

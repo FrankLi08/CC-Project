@@ -26,11 +26,10 @@ namespace TheDream.API.Providers
 
             if (user == false)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
-                context.Rejected();
+                context.SetError("invalid_grant", "The user name or password is incorrect.");   
                 return;
             }
-
+     
 
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
@@ -40,19 +39,18 @@ namespace TheDream.API.Providers
                 identity.AddClaim(new Claim(ClaimTypes.Role, value));
             }
             List<Claim> roles = identity.Claims.Where(x => x.Type == ClaimTypes.Role).ToList();
-            AuthenticationProperties properties = CreateProperties(Newtonsoft.Json.JsonConvert.SerializeObject(roles.Select(x => x.Value)));
-           
+            //AuthenticationProperties properties = CreateProperties(Newtonsoft.Json.JsonConvert.SerializeObject(roles.Select(x => x.Value)),context.UserName);
+            AuthenticationProperties properties = CreateProperties(context.UserName);
             AuthenticationTicket ticket = new AuthenticationTicket(identity, properties);
-            context.Validated(identity);
+            context.Validated(ticket);
            
         }
 
-        public static AuthenticationProperties CreateProperties(string role)
+        public static AuthenticationProperties CreateProperties(string userName)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
-                { "role", role },
-                {"version","1.0" }
+                {"userName",userName }
             };
             return new AuthenticationProperties(data);
         }

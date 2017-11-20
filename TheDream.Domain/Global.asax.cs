@@ -19,6 +19,7 @@ namespace TheDream.Domain
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+
         {
             // look if any security information exists for this request
             if (HttpContext.Current.User != null)

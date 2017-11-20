@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using TheDream.Domain.Repository.Interface;
 using TheDream.Model.Models;
 
@@ -13,11 +14,12 @@ namespace TheDream.Domain.Repository
     public class HttpClientRepo : IHttpClientRepo
     {
         private readonly IUserSession _userSession;
+        private string token = WebConfigurationManager.AppSettings["BearerToken"];
         public HttpClientRepo(IUserSession userSession)
         {
             _userSession = userSession;
         }
-        string ApiBaseUrl = "Http://localhost:62367/";
+        string ApiBaseUrl = "Http://localhost:62367";
         public async Task<HttpResponseMessage> GetRoles(string userName)
         {
             using (var client = new HttpClient())
